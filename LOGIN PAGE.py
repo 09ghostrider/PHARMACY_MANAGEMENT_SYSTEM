@@ -3,9 +3,26 @@ from tkinter import messagebox
 from tkinter import ttk
 from PIL import ImageTk
 from PHARMACY_MANAGEMENT_SYSTEM import *
+import sqlite3
+from CREAT_ACCOUNT import *
 
-username = ["niksh@gmail.com", "nanya@gmail.com", "niha@gmail.com", "shivanand@gmail.com"]
-password = [1234, 2345, 3456, 4567]
+con = sqlite3.connect("Orders.db")
+c = con.cursor()
+
+username = []
+password = []
+
+c.execute("SELECT rowid, * FROM Accounts ")
+all_items = c.fetchall()
+for item in all_items:
+    print(item)
+
+for Id in all_items:
+    username.append(Id[2])
+    password.append(Id[3])
+
+print(username)
+print(password)
 
 class Login:
     def __init__(self, root):
@@ -15,6 +32,10 @@ class Login:
 
         def Exit(): 
             self.root.destroy()
+
+        def Cre():
+            self.root.destroy()
+            CR()
 
         def Login():
             User = username_entry.get()
@@ -42,7 +63,7 @@ class Login:
             else:
                 messagebox.showinfo("ERROR", "INVALID USERNAME OR PASSWORD")
 
-        self.bg_img = ImageTk.PhotoImage(file = "/Users/saniha/Dropbox/My Mac (niha का MacBook Air)/Desktop/bg_img.jpg")
+        self.bg_img = ImageTk.PhotoImage(file = "/Users/saniha/Dropbox/My Mac (niha का MacBook Air)/Desktop/bg_img_4.jpg")
 
         bg = Label(self.root, image = self.bg_img)
         bg.pack()
@@ -68,11 +89,14 @@ class Login:
         password_entry = Entry(Login_canvas, font = ("times new roman", 25, "bold"), fg = "black", bg = "white", relief = GROOVE, show = "*")
         password_entry.place(x = 220, y = 210)
 
-        login_button = Button(Login_canvas, text = "   LOGIN   ", font = ("times new roman", 30, "bold"), relief = GROOVE, command = lambda:Login())
-        login_button.place(x = 320, y = 300)
+        login_button = Button(Login_canvas, text = "  LOGIN  ", font = ("times new roman", 30, "bold"), relief = GROOVE, command = lambda:Login())
+        login_button.place(x = 340, y = 300) # 130
 
-        exit_button = Button(Login_canvas, text = "   EXIT   ", font = ("times new roman", 30, "bold"), relief = GROOVE, command = lambda:Exit())
-        exit_button.place(x = 40, y = 300)
+        exit_button = Button(Login_canvas, text = "  EXIT  ", font = ("times new roman", 30, "bold"), relief = GROOVE, command = lambda:Exit())
+        exit_button.place(x = 200, y = 300) # 110
+
+        Creat_button = Button(Login_canvas, text = " SIGN UP ", font = ("times new roman", 30, "bold"), relief = GROOVE, command = lambda:Cre())
+        Creat_button.place(x = 30, y = 300) # 140
 
 log = Tk()
 Login(log)
@@ -81,5 +105,12 @@ def Restaurant():
     root = Tk()
     Pharmacy(root)
     # pass
+
+def CR():
+    C = Tk()
+    Creat_Acc(C)
+
+con.commit()
+con.close()
 
 log.mainloop()
