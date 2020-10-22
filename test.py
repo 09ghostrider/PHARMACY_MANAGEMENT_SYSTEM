@@ -1,8 +1,28 @@
 import sqlite3
 import re
+import os
 
-con = sqlite3.connect("Orders.db")
-c = con.cursor()
+# con = sqlite3.connect("Orders.db")
+# c = con.cursor()
+
+def Print_Accounts_Table():
+    con = sqlite3.connect("Orders.db")
+    c = con.cursor()
+    
+    c.execute("SELECT rowid, * FROM Accounts ")
+    all_items = c.fetchall()
+    
+    for item in all_items:
+        print(item)
+    
+    con.commit()
+    con.close()
+
+def Clear():
+    os.system("clear")
+
+# Clear()
+# Print_Accounts_Table()
 
 '''
 c.execute(""" CREATE TABLE Accounts (
@@ -14,21 +34,20 @@ c.execute(""" CREATE TABLE Accounts (
 
 # c.execute("INSERT INTO Accounts VALUES ('Shivanand', 'shivanand.hiremath@gmail.com', 4567)")
 
+# c.execute("INSERT INTO Accounts VALUES (?, ?, ?)", (Nam, User, Pass))
+
 # c.execute("UPDATE Accounts SET order_delevered = 'FALSE' WHERE rowid = 1")
 
-# c.execute("DELETE from Accounts WHERE rowid = 2")
+# c.execute("DELETE from Accounts WHERE rowid = 5")
 
 # c.execute("DROP TABLE Accounts")
 
-'''
-c.execute("SELECT rowid, * FROM Accounts ")
-all_items = c.fetchall()
-for item in all_items:
-    print(item)
-'''
+# Print_Accounts_Table()
 
-con.commit()
-con.close()
+# con.commit()
+# con.close()
+
+# Print_Accounts_Table()
 
 # item_1 int,
 # item_2 int,

@@ -71,7 +71,7 @@ class Login:
         title = Label(self.root, text = "PHARMACY", font = ("times new roman", 100, "bold"), bg = "yellow", fg = "red", bd = 10, relief = GROOVE)
         title.place(x = 0, y = 0, relwidth = 1)
 
-        Login_canvas = Canvas(self.root, width = 500, height = 350, bg = "navy blue")
+        Login_canvas = Canvas(self.root, width = 500, height = 350, bg = "#14a3df")
         Login_canvas.place(x = 470, y = 300)
 
         login_title = Label(Login_canvas, text = "LOGIN", font = ("times new roman", 50, "bold"), bg = "yellow", fg = "red", bd = 10, relief = GROOVE)

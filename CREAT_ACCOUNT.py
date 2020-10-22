@@ -3,9 +3,7 @@ from tkinter import messagebox
 from tkinter import ttk
 from PIL import ImageTk
 import sqlite3
-
-con = sqlite3.connect("Orders.db")
-c = con.cursor()
+from test import *
 
 class Creat_Acc:
     def __init__(self, root):
@@ -18,25 +16,48 @@ class Creat_Acc:
             self.root.destroy()
 
         def Signup():
+            con = sqlite3.connect("Orders.db")
+            c = con.cursor()
             Nam = name_entry.get()
             User = username_entry.get()
             Pass = password_entry.get()
             print(f"NAME: {Nam}\nEMAIL: {User}\nPASSWORD: {Pass}")
-            Exit()
+
+            if Nam != "" and User != "" and Pass != "":
+                if check_mail(User) == "VALID":
+                    messagebox.showinfo("WELCOME", "ACCOUNT CREATED")
+                    acc = [
+                        (Nam, User, Pass)
+                    ]
+                    c.executemany("INSERT INTO Accounts VALUES (?, ?, ?)", acc)
+                    Print_Accounts_Table()
+                    con.commit()
+                    con.close()
+                    Exit()
+                    # Clear()
+
+                else:
+                    messagebox.showinfo("ERROR", "INVALID GMAIL")
+            else:
+                messagebox.showinfo("ERROR", "ALL FIELDS ARE REQUIRED")
+
+        self.bg_img = ImageTk.PhotoImage(file = "/Users/saniha/Dropbox/My Mac (niha का MacBook Air)/Desktop/bg_img_4.jpg")
+        bg = Label(self.root, image = self.bg_img)
+        bg.place(x = -200, y = 0)
 
         title = Label(self.root, text = "PHARMACY", font = ("times new roman", 100, "bold"), bg = "yellow", fg = "red", bd = 10, relief = GROOVE)
         title.place(x = 0, y = 0, relwidth = 1)
 
-        Login_canvas = Canvas(self.root, width = 500, height = 400, bg = "navy blue")
+        Login_canvas = Canvas(self.root, width = 500, height = 400, bg = "#14a3df")
         Login_canvas.place(x = 470, y = 300)
 
-        signup_title = Label(Login_canvas, text = "SIGNUP", font = ("times new roman", 50, "bold"), bg = "yellow", fg = "red", bd = 10, relief = GROOVE)
+        signup_title = Label(Login_canvas, text = "SIGN UP", font = ("times new roman", 50, "bold"), bg = "yellow", fg = "red", bd = 10, relief = GROOVE)
         signup_title.place(x = 0, y = 0, relwidth = 1)
 
         name_title = Label(Login_canvas, text = "     NAME:     ", font = ("times new roman", 30, "bold"), fg = "black", bg = "white")
         name_title.place(x = 5, y = 140)
 
-        username_title = Label(Login_canvas, text = "     EMAIL:    ", font = ("times new roman", 30, "bold"), fg = "black", bg = "white")
+        username_title = Label(Login_canvas, text = "     GMAIL:    ", font = ("times new roman", 30, "bold"), fg = "black", bg = "white")
         username_title.place(x = 5, y = 200)
 
         password_title = Label(Login_canvas, text = "PASSWORD:", font = ("times new roman", 30, "bold"), fg = "black", bg = "white")
@@ -56,9 +77,6 @@ class Creat_Acc:
 
         exit_button = Button(Login_canvas, text = "    EXIT    ", font = ("times new roman", 30, "bold"), relief = GROOVE, command = lambda:Exit())
         exit_button.place(x = 40, y = 350)
-
-con.commit()
-con.close()
 
 # cre = Tk()
 # Creat_Acc(cre)
