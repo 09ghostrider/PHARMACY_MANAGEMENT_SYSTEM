@@ -40,7 +40,7 @@ c.execute(""" CREATE TABLE Accounts (
 
 # c.execute("DELETE from Accounts WHERE rowid = 5")
 
-# c.execute("DROP TABLE Accounts")
+# c.execute("DROP TABLE custermer_orders_2")
 
 # Print_Accounts_Table()
 

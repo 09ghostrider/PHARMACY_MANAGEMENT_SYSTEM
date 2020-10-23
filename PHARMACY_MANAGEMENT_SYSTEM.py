@@ -28,13 +28,13 @@ class Pharmacy:
                 Item_7_Total_Cost = (int(Item_8_entry.get()) * 17)
                 Item_8_Total_Cost = (int(Item_9_entry.get()) * 82)
                 Item_9_Total_Cost = (int(Item_10_entry.get()) * 106)
-                Item_1_Total_Cost0 = (int(Item_11_entry.get()) * 80)
-                Item_1_Total_Cost1 = (int(Item_12_entry.get()) * 52)
-                Item_1_Total_Cost2 = (int(Item_13_entry.get()) * 127)
-                Item_1_Total_Cost3 = (int(Item_14_entry.get()) * 88)
-                Item_1_Total_Cost4 = (int(Item_15_entry.get()) * 216)
-                Item_1_Total_Cost5 = (int(Item_16_entry.get()) * 95)
-                return (Item_1_Total_Cost + Item_2_Total_Cost + Item_3_Total_Cost + Item_4_Total_Cost + Item_5_Total_Cost + Item_6_Total_Cost + Item_7_Total_Cost + Item_8_Total_Cost + Item_9_Total_Cost + Item_1_Total_Cost0 + Item_1_Total_Cost1 + Item_1_Total_Cost2 + Item_1_Total_Cost3 + Item_1_Total_Cost4 + Item_1_Total_Cost5)
+                Item_10_Total_Cost = (int(Item_11_entry.get()) * 80)
+                Item_11_Total_Cost = (int(Item_12_entry.get()) * 52)
+                Item_12_Total_Cost = (int(Item_13_entry.get()) * 127)
+                Item_13_Total_Cost = (int(Item_14_entry.get()) * 88)
+                Item_14_Total_Cost = (int(Item_15_entry.get()) * 216)
+                Item_15_Total_Cost = (int(Item_16_entry.get()) * 95)
+                return (Item_1_Total_Cost + Item_2_Total_Cost + Item_3_Total_Cost + Item_4_Total_Cost + Item_5_Total_Cost + Item_6_Total_Cost + Item_7_Total_Cost + Item_8_Total_Cost + Item_9_Total_Cost + Item_10_Total_Cost + Item_11_Total_Cost + Item_12_Total_Cost + Item_13_Total_Cost + Item_14_Total_Cost + Item_15_Total_Cost)
 
             except:
                 messagebox.showinfo("ERROR", "INVALID QUANTITY")
@@ -44,6 +44,9 @@ class Pharmacy:
             Total_entry.delete(0, END)
             Total_entry.insert(0, Ans)
 
+        def Place_Final_Order():
+            Price = Total_calaculator()
+            
 
         dummy = Label(root, text = "\n\n\n\n\n\n\n\n\n\n", bg = "#50b9e9")
         dummy.grid(row = 0, column = 0)
@@ -198,7 +201,7 @@ class Pharmacy:
         Item_16_Cost = Label(root, text = "  ₹ 95 / 30g GEL  ", bg = "#bee0fa", fg = "white", font = ("times new roman", 30))
         Item_16_Cost.grid(row = 16, column = 2)
 
-        Order_Button = Button(root, text = "  PLACE ORDER  ", font = ("times new roman", 30, "bold"), relief = GROOVE)
+        Order_Button = Button(root, text = "  PLACE ORDER  ", font = ("times new roman", 30, "bold"), relief = GROOVE, command = lambda:Place_Final_Order())
         Order_Button.place(x = 950, y = 820)
 
         Exit_Button = Button(root, text = "  EXIT  ", font = ("times new roman", 30, "bold"), relief = GROOVE, command = lambda:Exit())
@@ -210,6 +213,6 @@ class Pharmacy:
         Total_entry = Entry(root, font = ("times new roman", 25, "bold"), fg = "black", bg = "white", relief = GROOVE)
         Total_entry.place(x = 1050, y = 250)
 
-root = Tk()
-Pharmacy(root)
-root.mainloop()
+# root = Tk()
+# Pharmacy(root)
+# root.mainloop()
