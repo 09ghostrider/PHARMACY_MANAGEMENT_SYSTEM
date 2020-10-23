@@ -3,7 +3,6 @@ from tkinter import messagebox
 from tkinter import ttk
 from PIL import ImageTk, Image
 from test import *
-from PHARMACY_MANAGEMENT_SYSTEM import *
 
 class Order_Page:
     def __init__(self, root):
@@ -24,15 +23,15 @@ class Order_Page:
         title = Label(self.root, text = "PHARMACY", font = ("times new roman", 100, "bold"), bg = "yellow", fg = "red", bd = 10, relief = GROOVE)
         title.place(x = 0, y = 0, relwidth = 1)
 
-        signup_title = Label(Login_canvas, text = "PLACE ORDER", font = ("times new roman", 50, "bold"), bg = "yellow", fg = "red", bd = 10, relief = GROOVE)
-        signup_title.place(x = 0, y = 0, relwidth = 1)
+        place_order_title = Label(Login_canvas, text = "PLACE ORDER", font = ("times new roman", 50, "bold"), bg = "yellow", fg = "red", bd = 10, relief = GROOVE)
+        place_order_title.place(x = 0, y = 0, relwidth = 1)
 
-        login_button = Button(Login_canvas, text = "   ORDER   ", font = ("times new roman", 30, "bold"), relief = GROOVE)
-        login_button.place(x = 290, y = 350)
+        order_button = Button(Login_canvas, text = "   ORDER   ", font = ("times new roman", 30, "bold"), relief = GROOVE)
+        order_button.place(x = 290, y = 350)
 
         exit_button = Button(Login_canvas, text = "    EXIT    ", font = ("times new roman", 30, "bold"), relief = GROOVE, command = lambda:Exit())
         exit_button.place(x = 50, y = 350)
 
-OP = Tk()
-Order_Page(OP)
-OP.mainloop()
+# OP = Tk()
+# Order_Page(OP)
+# OP.mainloop()

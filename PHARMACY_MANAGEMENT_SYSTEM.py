@@ -2,9 +2,10 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
 from PIL import ImageTk, Image
+from ORDER_PAGE import *
 
 class Pharmacy:
-    def __init__(self, root):
+    def __init__(self, root, Order_Name):
         self.root = root
         self.root.title("PHARMACY")
         self.root.geometry("1440x880+0+0")
@@ -44,8 +45,41 @@ class Pharmacy:
             Total_entry.delete(0, END)
             Total_entry.insert(0, Ans)
 
-        def Place_Final_Order():
+        def Place_Final_Order(name):
             Price = Total_calaculator()
+
+            if Price > 0:
+                con = sqlite3.connect("Orders.db")
+                c = con.cursor()
+                
+                item_1 = int(Item_2_entry.get())
+                item_2 = int(Item_3_entry.get())
+                item_3 = int(Item_4_entry.get())
+                item_4 = int(Item_5_entry.get())
+                item_5 = int(Item_6_entry.get())
+                item_6 = int(Item_7_entry.get())
+                item_7 = int(Item_8_entry.get())
+                item_8 = int(Item_9_entry.get())
+                item_9 = int(Item_10_entry.get())
+                item_10 = int(Item_11_entry.get())
+                item_11 = int(Item_12_entry.get())
+                item_12 = int(Item_13_entry.get())
+                item_13 = int(Item_14_entry.get())
+                item_14 = int(Item_15_entry.get())
+                item_15 = int(Item_16_entry.get())
+
+                item_delevered = "FALSE"
+
+                c.execute("INSERT INTO Quantity VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (name, item_1, item_2, item_3, item_4, item_5, item_6, item_7, item_8, item_9, item_10, item_11, item_12, item_13, item_14, item_15, item_delevered))
+
+                con.commit()
+                con.close()
+                
+                Exit()
+                O_page()
+            
+            else:
+                messagebox.showinfo("ERROR", "PLEASE ORDER ITEMS TO PLACE ORDER")
             
 
         dummy = Label(root, text = "\n\n\n\n\n\n\n\n\n\n", bg = "#50b9e9")
@@ -201,7 +235,7 @@ class Pharmacy:
         Item_16_Cost = Label(root, text = "  ₹ 95 / 30g GEL  ", bg = "#bee0fa", fg = "white", font = ("times new roman", 30))
         Item_16_Cost.grid(row = 16, column = 2)
 
-        Order_Button = Button(root, text = "  PLACE ORDER  ", font = ("times new roman", 30, "bold"), relief = GROOVE, command = lambda:Place_Final_Order())
+        Order_Button = Button(root, text = "  PLACE ORDER  ", font = ("times new roman", 30, "bold"), relief = GROOVE, command = lambda:Place_Final_Order(Order_Name))
         Order_Button.place(x = 950, y = 820)
 
         Exit_Button = Button(root, text = "  EXIT  ", font = ("times new roman", 30, "bold"), relief = GROOVE, command = lambda:Exit())
@@ -213,6 +247,11 @@ class Pharmacy:
         Total_entry = Entry(root, font = ("times new roman", 25, "bold"), fg = "black", bg = "white", relief = GROOVE)
         Total_entry.place(x = 1050, y = 250)
 
+def O_page():
+    OP = Tk()
+    Order_Page(OP)
+    OP.mainloop()
+
 # root = Tk()
-# Pharmacy(root)
+# Pharmacy(root, "Niksh")
 # root.mainloop()

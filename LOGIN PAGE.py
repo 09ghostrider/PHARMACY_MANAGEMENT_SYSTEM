@@ -9,6 +9,7 @@ from CREAT_ACCOUNT import *
 con = sqlite3.connect("Orders.db")
 c = con.cursor()
 
+name = []
 username = []
 password = []
 
@@ -18,9 +19,11 @@ for item in all_items:
     print(item)
 
 for Id in all_items:
+    name.append(Id[1])
     username.append(Id[2])
     password.append(Id[3])
 
+print(name)
 print(username)
 print(password)
 
@@ -52,7 +55,7 @@ class Login:
                     if password[I] == int(Pass):
                         messagebox.showinfo("WELCOME", "LOGIN SUCCESFULL")
                         self.root.destroy()
-                        Restaurant()
+                        Restaurant(name[I])
                     
                     else:
                         messagebox.showinfo("ERROR", "INVALID USERNAME OR PASSWORD")
@@ -61,7 +64,7 @@ class Login:
                     messagebox.showinfo("ERROR", "INVALID USERNAME OR PASSWORD")
 
             else:
-                messagebox.showinfo("ERROR", "INVALID USERNAME OR PASSWORD")
+                messagebox.showinfo("ERROR", "INVALID GMAIL OR PASSWORD")
 
         self.bg_img = ImageTk.PhotoImage(file = "/Users/saniha/Dropbox/My Mac (niha का MacBook Air)/Desktop/bg_img_4.jpg")
 
@@ -77,7 +80,7 @@ class Login:
         login_title = Label(Login_canvas, text = "LOGIN", font = ("times new roman", 50, "bold"), bg = "yellow", fg = "red", bd = 10, relief = GROOVE)
         login_title.place(x = 0, y = 0, relwidth = 1)
 
-        username_title = Label(Login_canvas, text = "     EMAIL:    ", font = ("times new roman", 30, "bold"), fg = "black", bg = "white")
+        username_title = Label(Login_canvas, text = "     GMAIL:    ", font = ("times new roman", 30, "bold"), fg = "black", bg = "white")
         username_title.place(x = 5, y = 150)
 
         password_title = Label(Login_canvas, text = "PASSWORD:", font = ("times new roman", 30, "bold"), fg = "black", bg = "white")
@@ -101,9 +104,9 @@ class Login:
 log = Tk()
 Login(log)
 
-def Restaurant():
+def Restaurant(Name):
     root = Tk()
-    Pharmacy(root)
+    Pharmacy(root, Name)
     # pass
 
 def CR():
