@@ -36,7 +36,7 @@ def Clear():
 
 # Clear()
 # Print_Accounts_Table()
-Print_Quantity_Table()
+# Print_Quantity_Table()
 
 '''
 c.execute(""" CREATE TABLE Quantity (
