@@ -5,6 +5,7 @@ from PIL import ImageTk
 from PHARMACY_MANAGEMENT_SYSTEM import *
 import sqlite3
 from CREAT_ACCOUNT import *
+from test import *
 
 con = sqlite3.connect("Orders.db")
 c = con.cursor()
