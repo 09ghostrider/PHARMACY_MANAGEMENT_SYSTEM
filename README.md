@@ -1,5 +1,4 @@
 # Pharmacy_Management_System
-By Niksh Hiremath
 
 The basic idea is to make a code to order pharmacy items through a app.
 
