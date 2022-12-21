@@ -54,7 +54,7 @@ Clear()
 #     name type
 # ) """)
 
-# c.execute("INSERT INTO Accounts VALUES ('Niksh', 'niksh.hiremath@gmail.com', 4567)")
+# c.execute("INSERT INTO Accounts VALUES ('User', 'user@gmail.com', 4567)")
 
 # c.execute("INSERT INTO Accounts VALUES (?, ?, ?)", (Nam, User, Pass))
 
