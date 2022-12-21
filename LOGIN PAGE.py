@@ -67,7 +67,7 @@ class Login:
             else:
                 messagebox.showinfo("ERROR", "INVALID GMAIL OR PASSWORD")
 
-        self.bg_img = ImageTk.PhotoImage(file = "/Users/saniha/Dropbox/My Mac (niha का MacBook Air)/Desktop/bg_img_4.jpg")
+        self.bg_img = ImageTk.PhotoImage(file = "bg_img_4.jpg")
 
         bg = Label(self.root, image = self.bg_img)
         bg.pack()
