@@ -10,7 +10,7 @@ class Order_Page:
         self.root.title("PHARMACY")
         self.root.geometry("1440x880+0+0")
 
-        self.bg_img = ImageTk.PhotoImage(file = "/Users/saniha/Dropbox/My Mac (niha का MacBook Air)/Desktop/bg_img_4.jpg")
+        self.bg_img = ImageTk.PhotoImage(file = "bg_img_4.jpg")
         bg = Label(self.root, image = self.bg_img)
         bg.place(x = -200, y = -10)
 
